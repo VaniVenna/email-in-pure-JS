@@ -1,0 +1,100 @@
+<html>
+    <head></head>
+    <body>
+        <div id="mailContainerId"></div>
+        <script src="./leftMenu.js"></script>
+        <script src="./displayMailItems.js"></script>
+    </body>
+    <script>
+        var leftMenuItems = [{
+            "mailBoxTitle": "inbox",
+            "mailBoxID": 1
+        },
+        {
+            "mailBoxTitle": "sent",
+            "mailBoxID": 2
+        },
+        {
+            "mailBoxTitle": "draft",
+            "mailBoxID": 3
+        },
+        {
+            "mailBoxTitle": "spam",
+            "mailBoxID": 4
+        }];
+        var mailItems = [{
+            "inbox": [
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample inbox1 content. Awesome accuracy. Exceptional distance. High performance blasters for epic blaster battles. This is Nerf Elite."
+                },              
+                {
+                    "from": "vennavani66@gmail.com",
+                    "to": "vennavani56@gmail.com",
+                    "content": "This is a sample inbox2 content. Awesome accuracy. Exceptional distance. High performance blasters for epic blaster battles. This is Nerf Elite."
+                },               
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample inbox3 content. Awesome accuracy. Exceptional distance. High performance blasters for epic blaster battles. This is Nerf Elite."
+                },              
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample inbox4 content. Awesome accuracy. Exceptional distance. High performance blasters for epic blaster battles. This is Nerf Elite."
+                },                
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample inbox5 content. Awesome accuracy. Exceptional distance. High performance blasters for epic blaster battles. This is Nerf Elite."
+                }
+            ],
+            "sent": [
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample sent1 content. Buy, sell, dream and scheme your way to riches! Make Monopoly your go-to-game for family game night."
+                },
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample sent2 content. Buy, sell, dream and scheme your way to riches! Make Monopoly your go-to-game for family game night."
+                }
+            ],
+            "draft": [
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample draft1 content. Spark your creativity and shape your own stories with Play-Doh modeling compound."
+                },
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample draft2 content. Spark your creativity and shape your own stories with Play-Doh modeling compound."
+                },
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample draft3 content. Spark your creativity and shape your own stories with Play-Doh modeling compound."
+                }
+            ],
+            "spam": [
+                {
+                    "from": "vennavani56@gmail.com",
+                    "to": "vennavani66@gmail.com",
+                    "content": "This is a sample spam content. SHAPE YOUR IMAGINATION!"
+                }
+            ]
+        }];
+        var parentContainer = document.querySelector("#mailContainerId");
+        var leftMenuInstance = new leftPanel(leftMenuItems, parentContainer);
+
+        leftMenuInstance.menuItems.childNodes.forEach(element => {
+            element.onclick = function (e) {
+                leftMenuInstance.loadMailItems(e.target, mailItems);
+            }
+        });
+        leftMenuInstance.loadMailItems("inbox", mailItems);
+    </script>
+</html>
