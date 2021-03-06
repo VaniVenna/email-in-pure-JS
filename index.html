@@ -2,8 +2,9 @@
     <head></head>
     <body>
         <div id="mailContainerId"></div>
-        <script src="./leftMenu.js"></script>
-        <script src="./displayMailItems.js"></script>
+        <script src="./scripts/leftMenu.js"></script>
+        <script src="./scripts/displayMailItems.js"></script>
+        <script src="./scripts/clickEvents.js"></script>
     </body>
     <script>
         var leftMenuItems = [{
@@ -87,11 +88,20 @@
                 }
             ]
         }];
+
         var parentContainer = document.querySelector("#mailContainerId");
         var leftMenuInstance = new leftPanel(leftMenuItems, parentContainer);
 
         leftMenuInstance.menuItems.childNodes.forEach(element => {
             element.onclick = function (e) {
+                // console.log(leftMenuInstance.commonCheck.checked);
+                /* To disable the common checkbox if it is checked/selected */
+                if (leftMenuInstance.commonCheck.checked === true)
+                    leftMenuInstance.commonCheck.checked = false;
+
+                if (leftMenuInstance.deleteIconCommon.disabled === false)
+                    leftMenuInstance.deleteIconCommon.disabled = true;
+    
                 leftMenuInstance.loadMailItems(e.target, mailItems);
             }
         });
